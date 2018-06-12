@@ -5,16 +5,17 @@
 ## Run Tests
 
  1. clone the souce code from github: 	
-`$ git clone https://github.com/yxm0513/airwallex`  
- 3. install the dependencies. 	
-`$ cd path; npm install`
- 5. run all tests: 
-`$ npm run test`
+	`$ git clone https://github.com/yxm0513/airwallex`  
+ 2. install the dependencies. 	
+	`$ cd path; npm install`
+ 3. run all tests: 
+	`$ npm run test`
 
 Here are the options to run tests, eg, only run success cases or one single test:
  
  - test
 	 - by defualt, it run all tests,
+ - single \<testname\> 
 	 - testname can be specified to run single test.
  - test:success
 	 - run all success(200) type tests.
@@ -27,7 +28,7 @@ Here are the options to run tests, eg, only run success cases or one single test
  - gen:success
 	 - only generate success(200) tests
  - gen:error
-	 - only generate error(200) tests
+	 - only generate error(400) tests
 
 Details can be found by : $ npm run
 
@@ -70,7 +71,7 @@ For each test, the 'input' needs to be defined, they will be sent via REST by mo
 Data fields are generated dynamiclly here(except several fix val), it will be good to cover datas with runing with CI repeatly.
 
 ## Current Status
- - Totol: 36 (24 passed, 12 failed)
+ - Total: 36 (24 passed, 12 failed)
 	- success : 10 (8 passed, 2 failed)
 	- error: 25(16 passed, 10 failed) 
 
