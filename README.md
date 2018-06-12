@@ -15,6 +15,7 @@ Here are the options to run tests, eg, only run success cases or one single test
  
  -  test
 	 - by defualt, it run all tests,
+ - single <testname> 
 	 - testname can be specified to run single test.
  -  test:success
 	 - run all success(200) type tests.
