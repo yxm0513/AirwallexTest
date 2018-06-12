@@ -22,15 +22,14 @@ const tests = JSON.parse(data);
  */
 describe('post /bank', () => {
   Object.keys(tests).forEach(key => {
-		if(tests[key].enabled.toUpperCase() !== 'YES'){
-			return;
-		}
+    if (tests[key].enabled.toUpperCase() !== 'YES') {
+      return;
+    }
     it('should post bank ' + key, (done) => {
-      //log.log(key + " start");
-      //log.log(JSON.stringify(tests[key]));
       chai.request(server).post('/bank').set('content-type', 'application/json').send(tests[key].input).end((err, res) => {
-	//log.log(JSON.stringify(res.body));
-	should.not.exist(err);
+	//log.log(JSON.stringify(tests[key].input));
+        //log.log(JSON.stringify(tests[key].output) + ' vs ' + JSON.stringify(res.body));
+        should.not.exist(err);
         res.should.be.json;
         res.should.have.status(tests[key].output.ret_code);
         res.body.should.be.a('object');
@@ -42,9 +41,8 @@ describe('post /bank', () => {
           res.body.should.have.property('error');
           res.body.error.should.equal(tests[key].output.error);
         }
-      	  done();
+        done();
       });
-      //log.log(key + " end");
     });
   });
 });
