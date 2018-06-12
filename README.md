@@ -5,7 +5,7 @@
 ## Run Tests
 
  1. clone the souce code from github: 	
-`$ git clone`  
+`$ git clone https://github.com/yxm0513/airwallex`  
  3. install the dependencies. 	
 `$ cd path; npm install`
  5. run all tests: 
@@ -69,7 +69,7 @@ A Sampe test configuration:
 	- error: 25(16 passed, 10 failed) 
 
 
-####Issues:
+###Issues:
 1. 	For US account_number , it is 1-17 character long in documents, however, the number is 7 and 11 in notificaton as below:
 	`Length of account_number should be between 7 and 11 when bank_country_code is 'US'`
 	test: error_account_number_3
@@ -89,5 +89,7 @@ is it a FAD? since, we already has test to cover input data without 'account_num
  - Enhance the test template with random data.
 
 
-Finally, didn't touch mocha/chai much before, however, it should be a good start. Hope I can div into them deep in feature.
+Finally, didn't touch mocha/chai much before, however, it should be a good start. 
+
+Hope I can div into them deeply in feature.
 
