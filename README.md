@@ -15,7 +15,7 @@ Here are the options to run tests, eg, only run success cases or one single test
  
  -  test
 	 - by defualt, it run all tests,
- - single <testname> 
+ - single \<testname\> 
 	 - testname can be specified to run single test.
  -  test:success
 	 - run all success(200) type tests.
@@ -65,23 +65,23 @@ A Sampe test configuration:
 
 
 ## Current Status
- - Totol: 36 (24 passed, 12 failed)
+ - Total: 36 (24 passed, 12 failed)
 	- success : 10 (8 passed, 2 failed)
 	- error: 25(16 passed, 10 failed) 
 
 
 ###Issues:
-1. 	For US account_number , it is 1-17 character long in documents, however, the number is 7 and 11 in notificaton as below:
+1. 	For US account\_number , it is 1-17 character long in documents, however, the number is 7 and 11 in notificaton as below:
 	`Length of account_number should be between 7 and 11 when bank_country_code is 'US'`
-	test: error_account_number_3
-2. For CN/AU account_number, the prompt message is same as above, they should have different message.
-	test: success_3, success_6, error_account_number_4,error_account_number_5,error_account_number_6,error_account_number_7
-3. when "account_number":"", length is 0, my expected response is 'Length of account_number should be between 1 and 17 when bank_country_code is 'US'', however, it's ''account_number' is required'.
-is it a FAD? since, we already has test to cover input data without 'account_number'
-    test: error_account_number_2
-4. error_bsb_1, error_bsb_2 need to be verified after fix of #1 and #2
-5. error_aba_1 should not pass, becase aba is mandatory when bank country is US
-6. error_swift_code_6 shoud not pass, swift code length is not 8 or 11. 
+	test: error\_account\_number\_3
+2. For CN/AU account\_number, the prompt message is same as above, they should have different message.
+	test: success\_3, success\_6, error\_account\_number\_4,error\_account\_number\_5,error\_account\_number\_6,error\_account\_number\_7
+3. when "account\_number":"", length is 0, my expected response is 'Length of account\_number should be between 1 and 17 when bank\_country\_code is 'US'', however, it's ''account\_number' is required'.
+is it a FAD? since, we already has test to cover input data without 'account\_number'
+    test: error\_account\_number\_2
+4. error\_bsb\_1, error\_bsb\_2 need to be verified after fix of #1 and #2
+5. error\_aba\_1 should not pass, becase aba is mandatory when bank country is US
+6. error\_swift\_code\_6 shoud not pass, swift code length is not 8 or 11. 
 
 
 
