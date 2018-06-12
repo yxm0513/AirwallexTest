@@ -13,14 +13,14 @@
 
 Here are the options to run tests, eg, only run success cases or one single test:
  
- -  test
+ - test
 	 - by defualt, it run all tests,
 	 - testname can be specified to run single test.
- -  test:success
+ - test:success
 	 - run all success(200) type tests.
  - test:error
 	 - run all error(400) type tests.
- - list_tests
+ - list\_tests
 	 - list all tests
  - gen
 	 - generate test case base on defined rules in gen.js
@@ -31,12 +31,9 @@ Here are the options to run tests, eg, only run success cases or one single test
 
 Details can be found by : $ npm run
 
-## Test development
-There is one script to generate test cases according to defined rules, it's gen.js under test folder.
-Ususlly, all new tests need to be added in gen.js to generate a test configuration and save it into test.json, test runner will read the configuration from test.json and triage tests accordingly. 
-The data options needs to be defined, they will be sent via REST by mocha/chai, meanwhile, the expected return data need also be defined in one test configuration. 
 
-Data fields are generated dynamiclly here(except several fix val), it will be good to cover datas with runing with CI repeatly.
+## Test development
+The designed tests was managed and generated into file test.json, which can be create by 'npm gen', 
 
 A Sampe test configuration:
 
@@ -58,10 +55,19 @@ A Sampe test configuration:
     },
 
 
- - success_1 : is test name.
+ - success\_1 : is test name.
  - input: is the data which will be sent to server.
  - output: is expected return values.
 
+The data fields in configuration are generated dynamiclly, of course, you can edit(include add/enable/disaable) them according your requirements.
+
+Commonly, we define rules to generate tests in gen.js, it's under test folder as well.
+
+Ususlly, all new tests need to be added in gen.js, and then generate the test configuration and save it into test.json, test runner(mocha) will read the configuration from test.json and trigger tests accordingly.
+
+For each test, the 'input' needs to be defined, they will be sent via REST by mocha/chai, on another side, the expected return data 'output' also needs be defined in each test configuration.
+
+Data fields are generated dynamiclly here(except several fix val), it will be good to cover datas with runing with CI repeatly.
 
 ## Current Status
  - Totol: 36 (24 passed, 12 failed)
@@ -70,26 +76,28 @@ A Sampe test configuration:
 
 
 ###Issues:
-1. 	For US account_number , it is 1-17 character long in documents, however, the number is 7 and 11 in notificaton as below:
+1. 	For US account\_number , it is 1-17 character long in documents, however, the number is 7 and 11 in notificaton as below:
 	`Length of account_number should be between 7 and 11 when bank_country_code is 'US'`
-	test: error_account_number_3
-2. For CN/AU account_number, the prompt message is same as above, they should have different message.
-	test: success_3, success_6, error_account_number_4,error_account_number_5,error_account_number_6,error_account_number_7
-3. when "account_number":"", length is 0, my expected response is 'Length of account_number should be between 1 and 17 when bank_country_code is 'US'', however, it's ''account_number' is required'.
-is it a FAD? since, we already has test to cover input data without 'account_number'
-    test: error_account_number_2
-4. error_bsb_1, error_bsb_2 need to be verified after fix of #1 and #2
-5. error_aba_1 should not pass, becase aba is mandatory when bank country is US
-6. error_swift_code_6 shoud not pass, swift code length is not 8 or 11. 
+	test: error\_account\_number\_3
+2. For CN/AU account\_number, the prompt message is same as above, they should have different message.
+	test: success\_3, success\_6, error\_account\_number\_4,error\_account\_number\_5,error\_account\_number\_6,error\_account\_number\_7
+3. when "account\_number":"", length is 0, my expected response is 'Length of account\_number should be between 1 and 17 when bank\_country\_code is 'US'', however, it's ''account\_number' is required'.
+is it a FAD? since, we already has test to cover input data without 'account\_number'
+    test: error\_account\_number\_2
+4. error\_bsb\_1, error\_bsb\_2 need to be verified after fix of #1 and #2
+5. error\_aba\_1 should not pass, becase aba is mandatory when bank country is US
+6. error\_swift\_code\_6 shoud not pass, swift code length is not 8 or 11. 
 
 
 
 ## TODO
- - Add More Tests, like try charsets, current is gsm7, verify other actions(PUT/GET/UPDATE/DELETE) to this URL.
- - Enhance the test template with random data.
+ - Enhance the test template gen.js with random data.
+ - Add More Tests, combile mutiple invalid fields after current issue fix,
+ - othrs tests like try other charsets, current is gsm7, 
+ - verify other actions(PUT/GET/UPDATE/DELETE) to this URL.
 
 
-Finally, didn't touch mocha/chai much before, however, it should be a good start. 
+Finally, I didn't touch mocha/chai much before, however, it should be a good start. 
 
-Hope I can div into them deeply in feature.
+Hope I can div into them deeply in future.
 
