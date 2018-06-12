@@ -1,0 +1,27 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "test framework sample",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "commander": "^2.15.1",
+    "mocha": "^5.2.0",
+    "mocha-logger": "^1.0.6",
+    "mocha-list-tests": "^1.0.1"
+  },
+  "scripts": {
+    "test": "mocha -t 50000 -g",
+    "test:success": "mocha -g success -t 50000",
+    "test:error": "mocha -g error -t 50000",
+    "list_tests" : "node ./node_modules/mocha-list-tests/mocha-list-tests.js ./test",
+    "gen": "node ./test/gen.js > ./test/test.json",
+    "gen:success": "node ./test/gen.js -p > ./test/test.json",
+    "gen:error": "node ./test/gen.js -n > ./test/test.json"
+  },
+  "author": "simon.yang.sh@gmail.com",
+  "license": "ISC"
+}
