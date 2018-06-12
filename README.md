@@ -5,11 +5,11 @@
 ## Run Tests
 
  1. clone the souce code from github: 	
-`$ git clone https://github.com/yxm0513/airwallex`  
- 3. install the dependencies. 	
-`$ cd path; npm install`
- 5. run all tests: 
-`$ npm run test`
+	`$ git clone https://github.com/yxm0513/airwallex`  
+ 2. install the dependencies. 	
+	`$ cd path; npm install`
+ 3. run all tests: 
+	`$ npm run test`
 
 Here are the options to run tests, eg, only run success cases or one single test:
  
@@ -28,7 +28,7 @@ Here are the options to run tests, eg, only run success cases or one single test
  - gen:success
 	 - only generate success(200) tests
  - gen:error
-	 - only generate error(200) tests
+	 - only generate error(400) tests
 
 Details can be found by : $ npm run
 
