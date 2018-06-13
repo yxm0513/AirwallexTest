@@ -93,7 +93,7 @@ is it a FAD? since, we already has test to cover input data without 'account\_nu
 
 
 ## TODO
- - Enhance the test template gen.js with random data.
+ - Enhance the test template in gen.js to be created with random data.
  - Enhance framework to support actions for preTest/postTest
  - Add More Tests, combile mutiple invalid fields after current issue fix commitment.
  - othrs tests like try other charsets, current is gsm7, 
