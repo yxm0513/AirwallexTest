@@ -11,7 +11,7 @@
  3. run all tests: 
 	`$ npm run test`
 
-Here are the options to run tests, eg, only run success cases or one single test:
+Here are the options to run tests, eg, only run 'success(200)' cases or one single test:
  
  - test
 	 - by defualt, it run all tests,
@@ -34,7 +34,7 @@ Details can be found by : $ npm run
 
 
 ## Test development
-The designed tests was managed and generated into file test.json, which can be create by 'npm gen', 
+The designed tests was managed and generated into file test.json, which can be created by 'npm run gen', 
 
 A Sampe test configuration:
 
@@ -60,7 +60,7 @@ A Sampe test configuration:
  - input: is the data which will be sent to server.
  - output: is expected return values.
 
-The data fields in configuration are generated dynamiclly, of course, you can edit(include add/enable/disaable) them according your requirements.
+The data fields in configuration are generated dynamiclly, of course, you can edit(add/remove/enable/disaable) them according your requirements.
 
 Commonly, we define rules to generate tests in gen.js, it's under test folder as well.
 
@@ -94,12 +94,14 @@ is it a FAD? since, we already has test to cover input data without 'account\_nu
 
 ## TODO
  - Enhance the test template gen.js with random data.
- - Add More Tests, combile mutiple invalid fields after current issue fix,
+ - Enhance framework to support actions for preTest/postTest
+ - Add More Tests, combile mutiple invalid fields after current issue fix commitment.
  - othrs tests like try other charsets, current is gsm7, 
+ - consider how to perform performace tests.
  - verify other actions(PUT/GET/UPDATE/DELETE) to this URL.
 
 
-Finally, I didn't touch mocha/chai much before, however, it should be a good start. Kindly leave some comments, no matter for anything missing in the implemantation, or how to desgin, implement better,  if it's possible:) 
+Finally, I didn't touch mocha/chai before, however, it should be a good start. If possible, kindly leave some comments here, no matter for anything missing in the implemantation, or how to desgin, implement the framework better. 
 
 Hope I can div into them deeply in future.
 
