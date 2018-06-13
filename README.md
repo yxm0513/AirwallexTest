@@ -101,7 +101,7 @@ is it a FAD? since, we already has test to cover input data without 'account\_nu
  - verify other actions(PUT/GET/UPDATE/DELETE) to this URL.
 
 
-Finally, I didn't touch mocha/chai before, however, it should be a good start. If possible, kindly leave some comments here, no matter for anything missing in the implemantation, or how to desgin, implement the framework better. 
+Finally, I didn't touch mocha/chai before, however, it should be a good start. If possible, kindly leave some comments here, no matter for anything missing in the implemantation, or for something like how to desgin, implement the framework better, or some best practices of mocha/chai. 
 
 Hope I can div into them deeply in future.
 
