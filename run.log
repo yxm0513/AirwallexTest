@@ -1,0 +1,217 @@
+
+> test@1.0.0 test /Users/xinming/simon/airwallex
+> mocha -t 50000
+
+{}
+
+
+  post /bank
+    ✓ should post bank success_1 (1842ms)
+    ✓ should post bank success_2 (818ms)
+    1) should post bank success_3
+    ✓ should post bank success_4 (623ms)
+    ✓ should post bank success_5 (683ms)
+    2) should post bank success_6
+    ✓ should post bank success_remove_swift (1364ms)
+    ✓ should post bank success_remove_bsb (734ms)
+    ✓ should post bank success_remove_aba (1366ms)
+    ✓ should post bank success_remove_swift_code_bsb_aba (865ms)
+    ✓ should post bank error_payment_method_1 (653ms)
+    ✓ should post bank error_payment_method_2 (659ms)
+    ✓ should post bank error_country_code_1 (567ms)
+    ✓ should post bank error_country_code_2 (688ms)
+    ✓ should post bank error_account_name_1 (597ms)
+    ✓ should post bank error_account_name_2 (2781ms)
+    ✓ should post bank error_account_name_3 (1732ms)
+    ✓ should post bank error_account_number_1 (719ms)
+    3) should post bank error_account_number_2
+    4) should post bank error_account_number_3
+    5) should post bank error_account_number_4
+    6) should post bank error_account_number_5
+    7) should post bank error_account_number_6
+    8) should post bank error_account_number_7
+    ✓ should post bank error_swift_code_1 (723ms)
+    ✓ should post bank error_swift_code_2 (1875ms)
+    ✓ should post bank error_swift_code_3 (644ms)
+    ✓ should post bank error_swift_code_4 (523ms)
+    ✓ should post bank error_swift_code_5 (589ms)
+    9) should post bank error_swift_code_6
+    10) should post bank error_bsb_1
+    11) should post bank error_bsb_2
+    12) should post bank error_aba_1
+    ✓ should post bank error_aba_2 (901ms)
+    ✓ should post bank error_case_1 (1567ms)
+    ✓ should post bank error_case_2 (2165ms)
+
+
+  24 passing (36s)
+  12 failing
+
+  1) post /bank
+       should post bank success_3:
+     Uncaught AssertionError: expected { Object (_events, _eventsCount, ...) } to have status code '200' but got 400
+      at chai.request.post.set.send.end (test/bank.js:34:25)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  2) post /bank
+       should post bank success_6:
+     Uncaught AssertionError: expected { Object (_events, _eventsCount, ...) } to have status code '200' but got 400
+      at chai.request.post.set.send.end (test/bank.js:34:25)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  3) post /bank
+       should post bank error_account_number_2:
+
+      Uncaught AssertionError: expected '\'account_number\' is required' to equal 'Length of account_number should be between 1 and 17 when bank_country_code is \'US\''
+      + expected - actual
+
+      -'account_number' is required
+      +Length of account_number should be between 1 and 17 when bank_country_code is 'US'
+      
+      at chai.request.post.set.send.end (test/bank.js:42:33)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  4) post /bank
+       should post bank error_account_number_3:
+
+      Uncaught AssertionError: expected 'Length of account_number should be between 7 and 11 when bank_country_code is \'US\'' to equal 'Length of account_number should be between 1 and 17 when bank_country_code is \'US\''
+      + expected - actual
+
+      -Length of account_number should be between 7 and 11 when bank_country_code is 'US'
+      +Length of account_number should be between 1 and 17 when bank_country_code is 'US'
+      
+      at chai.request.post.set.send.end (test/bank.js:42:33)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  5) post /bank
+       should post bank error_account_number_4:
+
+      Uncaught AssertionError: expected 'Length of account_number should be between 7 and 11 when bank_country_code is \'US\'' to equal 'Length of account_number should be between 6 and 9 when bank_country_code is \'AU\''
+      + expected - actual
+
+      -Length of account_number should be between 7 and 11 when bank_country_code is 'US'
+      +Length of account_number should be between 6 and 9 when bank_country_code is 'AU'
+      
+      at chai.request.post.set.send.end (test/bank.js:42:33)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  6) post /bank
+       should post bank error_account_number_5:
+
+      Uncaught AssertionError: expected 'Length of account_number should be between 7 and 11 when bank_country_code is \'US\'' to equal 'Length of account_number should be between 6 and 9 when bank_country_code is \'AU\''
+      + expected - actual
+
+      -Length of account_number should be between 7 and 11 when bank_country_code is 'US'
+      +Length of account_number should be between 6 and 9 when bank_country_code is 'AU'
+      
+      at chai.request.post.set.send.end (test/bank.js:42:33)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  7) post /bank
+       should post bank error_account_number_6:
+
+      Uncaught AssertionError: expected 'Length of account_number should be between 7 and 11 when bank_country_code is \'US\'' to equal 'Length of account_number should be between 8 and 20 when bank_country_code is \'AU\''
+      + expected - actual
+
+      -Length of account_number should be between 7 and 11 when bank_country_code is 'US'
+      +Length of account_number should be between 8 and 20 when bank_country_code is 'AU'
+      
+      at chai.request.post.set.send.end (test/bank.js:42:33)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  8) post /bank
+       should post bank error_account_number_7:
+
+      Uncaught AssertionError: expected 'Length of account_number should be between 7 and 11 when bank_country_code is \'US\'' to equal 'Length of account_number should be between 8 and 20 when bank_country_code is \'AU\''
+      + expected - actual
+
+      -Length of account_number should be between 7 and 11 when bank_country_code is 'US'
+      +Length of account_number should be between 8 and 20 when bank_country_code is 'AU'
+      
+      at chai.request.post.set.send.end (test/bank.js:42:33)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  9) post /bank
+       should post bank error_swift_code_6:
+     Uncaught AssertionError: expected { Object (_events, _eventsCount, ...) } to have status code '400' but got 200
+      at chai.request.post.set.send.end (test/bank.js:34:25)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  10) post /bank
+       should post bank error_bsb_1:
+
+      Uncaught AssertionError: expected 'Length of account_number should be between 7 and 11 when bank_country_code is \'US\'' to equal ''
+      + expected - actual
+
+      -Length of account_number should be between 7 and 11 when bank_country_code is 'US'
+      
+      at chai.request.post.set.send.end (test/bank.js:42:33)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  11) post /bank
+       should post bank error_bsb_2:
+
+      Uncaught AssertionError: expected 'Length of account_number should be between 7 and 11 when bank_country_code is \'US\'' to equal ''
+      + expected - actual
+
+      -Length of account_number should be between 7 and 11 when bank_country_code is 'US'
+      
+      at chai.request.post.set.send.end (test/bank.js:42:33)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+  12) post /bank
+       should post bank error_aba_1:
+     Uncaught AssertionError: expected { Object (_events, _eventsCount, ...) } to have status code '400' but got 200
+      at chai.request.post.set.send.end (test/bank.js:34:25)
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:716:12)
+      at parser (node_modules/superagent/lib/node/index.js:916:18)
+      at IncomingMessage.res.on (node_modules/superagent/lib/node/parsers/json.js:19:7)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+
+
