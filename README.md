@@ -64,11 +64,11 @@ The data fields in configuration are generated dynamiclly, of course, you can ed
 
 Commonly, we define rules to generate tests in gen.js, it's under test folder as well.
 
-Ususlly, all new tests need to be added in gen.js, and then generate the test configuration and save it into test.json, test runner(mocha) will read the configuration from test.json and trigger tests accordingly.
+Usually, all new tests need to be added in gen.js, and then generate the test configuration and save it into test.json, test runner(mocha) will read the configuration from test.json and trigger tests accordingly.
 
 For each test, the 'input' needs to be defined, they will be sent via REST by mocha/chai, on another side, the expected return data 'output' also needs be defined in each test configuration.
 
-Data fields are generated dynamiclly here(except several fix val), it will be good to cover datas with runing with CI repeatly.
+Data fields are generated dynamically here(except several fix val), it will be good to cover datas with runing with CI repeatly.
 
 ## Current Status
  - Total: 36 (24 passed, 12 failed)
@@ -76,8 +76,9 @@ Data fields are generated dynamiclly here(except several fix val), it will be go
 	- error: 25(16 passed, 10 failed) 
 
 
-###Issues:
-1. 	For US account\_number , it is 1-17 character long in documents, however, the number is 7 and 11 in notificaton as below:
+
+### Issues:
+1. For US account\_number , it is 1-17 character long in documents, however, the number is 7 and 11 in notificaton as below:
 	`Length of account_number should be between 7 and 11 when bank_country_code is 'US'`
 	test: error\_account\_number\_3
 2. For CN/AU account\_number, the prompt message is same as above, they should have different message.
@@ -98,7 +99,7 @@ is it a FAD? since, we already has test to cover input data without 'account\_nu
  - verify other actions(PUT/GET/UPDATE/DELETE) to this URL.
 
 
-Finally, I didn't touch mocha/chai much before, however, it should be a good start. 
+Finally, I didn't touch mocha/chai much before, however, it should be a good start. Kindly leave some comments, no matter for anything missing in the implemantation, or how to desgin, implement better,  if it's possible:) 
 
 Hope I can div into them deeply in future.
 
