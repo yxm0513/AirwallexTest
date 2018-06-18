@@ -109,7 +109,7 @@ is it a FAD? since, we already has test to cover input data without 'account\_nu
  - Enhance framework to support actions for preTest/postTest
  - Add More Tests, combile mutiple invalid fields after current issue fix commitment.
  - othrs tests like try other charsets, current is gsm7, 
- - consider how to perform performace tests.
+ - consider how to perform performace tests, unittest(Karma), coverage test .etc
  - verify other actions(PUT/GET/UPDATE/DELETE) to this URL.
 
 
