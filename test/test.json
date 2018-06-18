@@ -4,11 +4,11 @@
     "input": {
       "payment_method": "SWIFT",
       "bank_country_code": "US",
-      "account_name": "fåY^$7-j)o",
-      "account_number": "^u",
-      "swift_code": "xüñ,USWtafk",
-      "aba": "¿]ei9ñ€+#",
-      "bsb": "!/ßhT0"
+      "account_name": "ÉooZΣ",
+      "account_number": "zÉ",
+      "swift_code": "CΔRgUS'k0.ñ",
+      "aba": "ØQDΘéXæuù",
+      "bsb": "&rΘRÜ="
     },
     "output": {
       "ret_code": "200",
@@ -20,11 +20,11 @@
     "input": {
       "payment_method": "SWIFT",
       "bank_country_code": "AU",
-      "account_name": "€<lèmñ#7é",
-      "account_number": "0oøBx;L",
-      "swift_code": "@¿€.AU€jΦΣj",
-      "aba": "UuI7ΩØ$+ø",
-      "bsb": "Ξ-~¤T<"
+      "account_name": "N4BìK8+",
+      "account_number": "¡kh^E$5I",
+      "swift_code": "<uC1AU(é2ÖK",
+      "aba": "æΩØΦ/KFUL",
+      "bsb": "mbLnÑø"
     },
     "output": {
       "ret_code": "200",
@@ -36,11 +36,11 @@
     "input": {
       "payment_method": "SWIFT",
       "bank_country_code": "CN",
-      "account_name": "òaxÉ/ò¤Vj-",
-      "account_number": "è'gTPΣ£¿1ül)VÑ¿YT",
-      "swift_code": "oÖΨDCN.|",
-      "aba": "C~Ωx&}æCò",
-      "bsb": "Gòy1e2"
+      "account_name": "ì+ÉL¤Z{Π",
+      "account_number": "3&T~>ß^?käÜØ",
+      "swift_code": "ÅòÇrCNkbJòΔ",
+      "aba": "-<eÑ-,kÇa",
+      "bsb": ":Ug(¿E"
     },
     "output": {
       "ret_code": "200",
@@ -52,11 +52,11 @@
     "input": {
       "payment_method": "LOCAL",
       "bank_country_code": "US",
-      "account_name": "ø~tàVèÆ",
-      "account_number": "xGΘΦ",
-      "swift_code": "éè£üUS]fUUm",
-      "aba": "g(M3aΦk7¡",
-      "bsb": "UÖDXAò"
+      "account_name": "~Og=T",
+      "account_number": ":€E",
+      "swift_code": "bpäΔUS¤V",
+      "aba": "ΠΨΔΠye{Ω2",
+      "bsb": "go7S<F"
     },
     "output": {
       "ret_code": "200",
@@ -68,11 +68,11 @@
     "input": {
       "payment_method": "LOCAL",
       "bank_country_code": "AU",
-      "account_name": "3]§|r!",
-      "account_number": "Ñ/zjbbcC",
-      "swift_code": "Ω%a*AU€ù",
-      "aba": "£YΞ¡å+É2j",
-      "bsb": "ΩH§IyØ"
+      "account_name": "Ω}7D;c",
+      "account_number": "peΠ,oyΔ",
+      "swift_code": "2ÜfåAUEXUbv",
+      "aba": "ò@9g,ær^_",
+      "bsb": "ò|TeU@"
     },
     "output": {
       "ret_code": "200",
@@ -84,18 +84,18 @@
     "input": {
       "payment_method": "LOCAL",
       "bank_country_code": "CN",
-      "account_name": "R£7Qo",
-      "account_number": "ÖF}ÄQ<U+3Θ[E¡s",
-      "swift_code": "*[B9CNyq",
-      "aba": "ÆuzA¥Y[f@",
-      "bsb": "LkQCìp"
+      "account_name": "9@€+)",
+      "account_number": "Ñèv^DùU]$X§#;4Δ{¡",
+      "swift_code": "t3l6CNef",
+      "aba": "|=äé/t2DÑ",
+      "bsb": "xQR}8è"
     },
     "output": {
       "ret_code": "200",
       "success": "Bank details saved"
     }
   },
-  "success_remove_swift": {
+  "success_remove_swift_7": {
     "enabled": "yes",
     "input": {
       "payment_method": "LOCAL",
@@ -110,7 +110,7 @@
       "success": "Bank details saved"
     }
   },
-  "success_remove_bsb": {
+  "success_remove_bsb_8": {
     "enabled": "yes",
     "input": {
       "payment_method": "SWIFT",
@@ -125,7 +125,7 @@
       "success": "Bank details saved"
     }
   },
-  "success_remove_aba": {
+  "success_remove_aba_9": {
     "enabled": "yes",
     "input": {
       "payment_method": "SWIFT",
@@ -140,7 +140,7 @@
       "success": "Bank details saved"
     }
   },
-  "success_remove_swift_code_bsb_aba": {
+  "success_remove_swift_code_bsb_aba_10": {
     "enabled": "yes",
     "input": {
       "payment_method": "LOCAL",
@@ -354,7 +354,7 @@
     },
     "output": {
       "ret_code": "400",
-      "error": "Length of account_number should be between 8 and 20 when bank_country_code is 'AU'"
+      "error": "Length of account_number should be between 8 and 20 when bank_country_code is 'CN'"
     }
   },
   "error_account_number_7": {
@@ -370,7 +370,7 @@
     },
     "output": {
       "ret_code": "400",
-      "error": "Length of account_number should be between 8 and 20 when bank_country_code is 'AU'"
+      "error": "Length of account_number should be between 8 and 20 when bank_country_code is 'CN'"
     }
   },
   "error_swift_code_1": {

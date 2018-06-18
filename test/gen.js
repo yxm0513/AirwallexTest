@@ -1,4 +1,4 @@
-var program = require('commander');
+let program = require('commander');
 
 program
   .version('0.1.0')
@@ -15,7 +15,7 @@ if (Object.keys(process.argv).length === 2) {
  * Generate tests
  *
  */
-var template = {
+let template = {
   "payment_method": "SWIFT",
   "bank_country_code": "US",
   "account_name": "John Smith",
@@ -25,21 +25,21 @@ var template = {
   "bsb": "111222"
 };
 
-var payment_method = ["SWIFT", "LOCAL"]
-var bank_country_code = ["US", "AU", "CN"]
-var account_name_min = 2
-var account_name_max = 10
-var us_account_number_min = 1
-var us_account_number_max = 17
-var au_account_number_min = 6
-var au_account_number_max = 9
-var cn_account_number_min = 8
-var cn_account_number_max = 20
-var swift_pre = 4
-var swift_suf1 = 2
-var swift_suf2 = 5
-var bsb = 6
-var aba = 9
+let payment_method = ["SWIFT", "LOCAL"]
+let bank_country_code = ["US", "AU", "CN"]
+let account_name_min = 2
+let account_name_max = 10
+let us_account_number_min = 1
+let us_account_number_max = 17
+let au_account_number_min = 6
+let au_account_number_max = 9
+let cn_account_number_min = 8
+let cn_account_number_max = 20
+let swift_pre = 4
+let swift_suf1 = 2
+let swift_suf2 = 5
+let bsb = 6
+let aba = 9
 
 /*
  * get a random number between min and max
@@ -53,11 +53,11 @@ function get_random(min, max) {
  */
 function get_random_text(min, max) {
   //return (Math.random().toString(36) + '00000000000000000').slice(2, get_random(min, max) + 2);
-  var text = "";
-  //var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var possible = '@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞ^{}\[]~|€ÆæßÉ!"#¤%&\'()*+,-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿äöñüàabctefghijklmnopqrstuvwxyz';
+  let text = "";
+  //let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let possible = '@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞ^{}\[]~|€ÆæßÉ!"#¤%&\'()*+,-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿äöñüàabctefghijklmnopqrstuvwxyz';
   l = get_random(min, max);
-  for (var i = 0; i < l; i++)
+  for (let i = 0; i < l; i++)
     text += possible.charAt(Math.floor(Math.random() * possible.length));
 
   return text;
@@ -66,18 +66,18 @@ function get_random_text(min, max) {
 /*
  * create positive tests
  */
-var tests = {}
+let tests = {}
 
 if (program.postive) {
-  var i = 1;
+  let i = 1;
   payment_method.forEach(function(payment) {
     bank_country_code.forEach(function(country_code) {
-      var obj = new Object();
+      let obj = new Object();
       obj.payment_method = payment;
       obj.bank_country_code = country_code;
       obj.account_name = get_random_text(account_name_min, account_name_max);
-      var account_number = '';
-      var swift_code = '';
+      let account_number = '';
+      let swift_code = '';
       if (country_code === 'US') {
         account_number = get_random_text(us_account_number_min, us_account_number_max);
       }
@@ -88,14 +88,14 @@ if (program.postive) {
         account_number = get_random_text(cn_account_number_min, cn_account_number_max)
       }
       obj.account_number = account_number;
-      var swift = [];
+      let swift = [];
       swift.push(get_random_text(swift_pre, swift_pre) + country_code + get_random_text(swift_suf1, swift_suf1));
       swift.push(get_random_text(swift_pre, swift_pre) + country_code + get_random_text(swift_suf2, swift_suf2));
       swift_code = swift[Math.floor(Math.random() * swift.length)];
       obj.swift_code = swift_code;
       obj.aba = get_random_text(aba, aba);
       obj.bsb = get_random_text(bsb, bsb);
-      var testname = "success_" + String(i);
+      let testname = "success_" + String(i);
       tests[testname] = {
         'enabled': 'yes',
         'input': obj,
@@ -110,11 +110,11 @@ if (program.postive) {
   /*
    * add 1: no swift code when it's LOCAL
    */
-  var clone;
+  let clone;
   clone = Object.assign({}, template);
   clone.payment_method = "LOCAL";
   delete clone.swift_code
-  var testname = "success_remove_swift";
+  let testname = "success_remove_swift_" + String(i++);
   tests[testname] = {
     'enabled': 'yes',
     'input': clone,
@@ -131,7 +131,7 @@ if (program.postive) {
   clone = Object.assign({}, template);
   clone.bank_country_code = "US";
   delete clone.bsb
-  testname = "success_remove_bsb";
+  testname = "success_remove_bsb_" + String(i++);
   tests[testname] = {
     'enabled': 'yes',
     'input': clone,
@@ -149,7 +149,7 @@ if (program.postive) {
   clone.account_number = "asdfqwer";
   clone.swift_code = "asdfAUer"; //need to meet requirements
   delete clone.aba
-  testname = "success_remove_aba";
+  testname = "success_remove_aba_" + String(i++);
   tests[testname] = {
     'enabled': 'yes',
     'input': clone,
@@ -169,7 +169,7 @@ if (program.postive) {
   delete clone.swift_code
   delete clone.aba
   delete clone.bsb
-  testname = "success_remove_swift_code_bsb_aba";
+  testname = "success_remove_swift_code_bsb_aba_" + String(i++);
   tests[testname] = {
     'enabled': 'yes',
     'input': clone,
@@ -188,10 +188,12 @@ if (program.negative) {
   /*
    * for payment_method : 1. doesn't exist 2. invalid value
    */
-  var clone;
+  let clone;
   clone = Object.assign({}, template);
   delete clone.payment_method
-  tests["error_payment_method_1"] = {
+  let i = 1;
+  testname = "error_payment_method_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -201,7 +203,8 @@ if (program.negative) {
   };
   clone = Object.assign({}, template);
   clone.payment_method = "jdjdj";
-  tests["error_payment_method_2"] = {
+  testname = "error_payment_method_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -216,7 +219,9 @@ if (program.negative) {
    */
   clone = Object.assign({}, template);
   delete clone.bank_country_code
-  tests["error_country_code_1"] = {
+  i = 1;
+  testname = "error_country_code_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -226,7 +231,8 @@ if (program.negative) {
   };
   clone = Object.assign({}, template);
   clone.bank_country_code = "error";
-  tests["error_country_code_2"] = {
+  testname = "error_country_code_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -240,7 +246,9 @@ if (program.negative) {
    */
   clone = Object.assign({}, template);
   delete clone.account_name
-  tests["error_account_name_1"] = {
+  i = 1;
+  testname = "error_account_name_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -250,7 +258,8 @@ if (program.negative) {
   };
   clone = Object.assign({}, template);
   clone.account_name = "e";
-  tests["error_account_name_2"] = {
+  testname = "error_account_name_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -260,7 +269,8 @@ if (program.negative) {
   };
   clone = Object.assign({}, template);
   clone.account_name = "errorerror1";
-  tests["error_account_name_3"] = {
+  testname = "error_account_name_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -275,7 +285,9 @@ if (program.negative) {
 
   clone = Object.assign({}, template);
   delete clone.account_number
-  tests["error_account_number_1"] = {
+  i = 1;
+  testname = "error_account_number_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -287,7 +299,8 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = "US";
   clone.account_number = ""; /*length <1*/
-  tests["error_account_number_2"] = {
+  testname = "error_account_number_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -298,7 +311,8 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = "US";
   clone.account_number = "1234567890123456789"; /*length > 17 */
-  tests["error_account_number_3"] = {
+  testname = "error_account_number_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -310,7 +324,8 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = "AU";
   clone.account_number = "sdsd"; /*length < 6*/
-  tests["error_account_number_4"] = {
+  testname = "error_account_number_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -321,7 +336,8 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = "AU";
   clone.account_number = "1234567890a"; /*length > 9*/
-  tests["error_account_number_5"] = {
+  testname = "error_account_number_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -333,7 +349,8 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = "CN";
   clone.account_number = "sdsd2"; /*length < 8*/
-  tests["error_account_number_6"] = {
+  testname = "error_account_number_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -344,7 +361,8 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = "CN";
   clone.account_number = "1234567890a1234567890"; /*length > 20*/
-  tests["error_account_number_7"] = {
+  testname = "error_account_number_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -359,7 +377,9 @@ if (program.negative) {
    */
   clone = Object.assign({}, template);
   delete clone.swift_code
-  tests["error_swift_code_1"] = {
+  i = 1;
+  testname = "error_swift_code_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -370,7 +390,8 @@ if (program.negative) {
 
   clone = Object.assign({}, template);
   clone.swift_code = "adsasdfd"; /* not match */
-  tests["error_swift_code_2"] = {
+  testname = "error_swift_code_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -381,7 +402,8 @@ if (program.negative) {
 
   clone = Object.assign({}, template);
   clone.swift_code = "adsa12fdabc"; /* not match */
-  tests["error_swift_code_3"] = {
+  testname = "error_swift_code_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -392,7 +414,8 @@ if (program.negative) {
 
   clone = Object.assign({}, template);
   clone.swift_code = "adsaUSfdabc1"; /* length is not 8 or 11 */
-  tests["error_swift_code_4"] = {
+  testname = "error_swift_code_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -403,7 +426,8 @@ if (program.negative) {
 
   clone = Object.assign({}, template);
   clone.swift_code = "adsaUS"; /* length is not 8 or 11 */
-  tests["error_swift_code_5"] = {
+  testname = "error_swift_code_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -413,7 +437,8 @@ if (program.negative) {
   };
   clone = Object.assign({}, template);
   clone.swift_code = "adsaUS123"; /* length is not 8 or 11 */
-  tests["error_swift_code_6"] = {
+  testname = "error_swift_code_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -428,7 +453,9 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = 'AU';
   delete clone.bsb;
-  tests["error_bsb_1"] = {
+  i = 1;
+  testname = "error_bsb_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -440,7 +467,8 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = 'AU';
   clone.bsb = 'sd'; /*length is not 6*/
-  tests["error_bsb_2"] = {
+  testname = "error_bsb_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -457,7 +485,9 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = 'US';
   delete clone.aba;
-  tests["error_aba_1"] = {
+  i = 1;
+  testname = "error_aba_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -469,7 +499,8 @@ if (program.negative) {
   clone = Object.assign({}, template);
   clone.bank_country_code = 'US';
   clone.aba = 'sd3'; /*length is not 9*/
-  tests["error_aba_2"] = {
+  testname = "error_aba_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {
@@ -483,14 +514,16 @@ if (program.negative) {
    */
 
   clone = Object.assign({}, template);
-  var key, keys = Object.keys(clone);
-  var n = keys.length;
-  var newobj = {}
+  let key, keys = Object.keys(clone);
+  let n = keys.length;
+  let newobj = {}
   while (n--) {
     key = keys[n];
     newobj[key.toUpperCase()] = clone[key];
   }
-  tests["error_case_1"] = {
+  i = 1;
+  testname = "error_case_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': newobj,
     'output': {
@@ -500,10 +533,11 @@ if (program.negative) {
   };
 
   clone = Object.assign({}, template);
-  for (var i in clone) {
+  for (let i in clone) {
     clone[i] = clone[i].toLowerCase();
   }
-  tests["error_case_2"] = {
+  testname = "error_case_" + String(i++);
+  tests[testname] = {
     'enabled': 'yes',
     'input': clone,
     'output': {

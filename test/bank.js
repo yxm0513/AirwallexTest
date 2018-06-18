@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 /*
  * get tests
  */
-var fs = require('fs');
+const fs = require('fs');
 const path = require("path");
 const data = fs.readFileSync(path.resolve(__dirname, 'test.json'), 'utf8');
 const tests = JSON.parse(data);
@@ -27,7 +27,7 @@ describe('post /bank', () => {
     }
     it('should post bank ' + key, (done) => {
       chai.request(server).post('/bank').set('content-type', 'application/json').send(tests[key].input).end((err, res) => {
-	//log.log(JSON.stringify(tests[key].input));
+        //log.log(JSON.stringify(tests[key].input));
         //log.log(JSON.stringify(tests[key].output) + ' vs ' + JSON.stringify(res.body));
         should.not.exist(err);
         res.should.be.json;
