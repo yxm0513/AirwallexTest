@@ -85,7 +85,7 @@ Data fields are generated dynamically here(except several fix val), it will be g
  - Total: 36 (24 passed, 12 failed)
 	- success : 10 (8 passed, 2 failed)
 	- error: 25(16 passed, 10 failed) 
-
+![Screenshot](screen.png)
   * note: for reference, I added one run.log in source code.
 
 
